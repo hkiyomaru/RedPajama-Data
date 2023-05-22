@@ -8,7 +8,7 @@ The processing of the CommonCrawl dataset contains the following stages:
 
 ### Quality Filter using `cc-net`
 
-We use the [`cc-net`](https://github.com/facebookresearch/cc_net) pipeline out of the box to preprocess English-text web pages from five CommonCrawl dumps: `2019-30`, `2020-05`, `2021-04`, `2022-05`, and `2023-06`.
+We use the [`cc-net`](https://github.com/facebookresearch/cc_net) pipeline out of the box to preprocess Japanese-text web pages from five CommonCrawl dumps: `2019-30`, `2020-05`, `2021-04`, `2022-05`, and `2023-06`.
 This pipeline downloads the data, removes duplicates within a dump, detects language, and applies a language model to compute perplexity and filter out low-quality pages.
 
 Here are steps to reproduce the pipeline on a single machine with a large amount of RAM, using the `cc_net` clone in this folder:
@@ -21,7 +21,7 @@ mkdir data
 sudo apt-get update
 sudo apt install build-essential cmake libboost-system-dev libboost-thread-dev libboost-program-options-dev libboost-test-dev libeigen3-dev zlib1g-dev libbz2-dev liblzma-dev
 make install
-make lang=en dl_lm
+make lang=ja dl_lm
 
 # Run CC Net on the 2023-06 dump
 python -m cc_net --dump 2023-06 --task_parallelism 20 --num_shards 5000 -l en --mine_num_processes 20 --hash_in_mem 1
